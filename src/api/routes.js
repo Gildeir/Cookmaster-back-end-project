@@ -1,5 +1,5 @@
 const { getAll } = require('../models/user');
-const getPosts = require('../controllers/posts');
+const { getPosts } = require('../controllers/posts');
 const { createUsers } = require('../controllers/createUser');
 const { login } = require('../controllers/login');
 
