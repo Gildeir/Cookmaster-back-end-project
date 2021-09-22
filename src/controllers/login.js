@@ -32,8 +32,7 @@ const user = await User.findUser(email);
 if (!user || user.password !== password) return ERROR_USER_DONT_EXISTS(res);
 
 const userWithOutPassword = {
-  // eslint-disable-next-line no-underscore-dangle
-  id: user._id,
+  id: user.id,
   email: user.email,
 };
 
