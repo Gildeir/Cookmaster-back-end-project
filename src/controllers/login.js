@@ -10,30 +10,37 @@ const jwtConfiguration = {
 };
 
 const ERROR_USER_AND_LOGIN = (res) => res.status(401).json({
-    message: 'É necessário usuário e senha para fazer login',
+    message: 'All fields must be filled',
   });
 const ERROR_USER_DONT_EXISTS = (res) => res.status(401).json({
-  message: 'Usuário não existe ou senha inválida',
+  message: 'Incorrect username or password',
 });
 
 // const SUCCESS_MESSAGE = (res) => res.status(200).json({
 //   message: 'Login efetuado com sucesso',
 // });
 
-module.exports = async (req, res) => {
-const { name, password } = req.body;
+const login = async (req, res) => {
+const { email, password } = req.body;
 
-if (!name || !password) return ERROR_USER_AND_LOGIN;
+if (!email || !password) return ERROR_USER_AND_LOGIN(res);
 
-const user = await User.findUser(name);
+console.log(email);
+
+const user = await User.findUser(email);
+
+if (!user || user.password !== password) return ERROR_USER_DONT_EXISTS(res);
 
 const userWithOutPassword = {
-  id: user.id,
-  name: user.name,
+  // eslint-disable-next-line no-underscore-dangle
+  id: user._id,
+  email: user.email,
 };
 
-if (!user || user.password !== password) return ERROR_USER_DONT_EXISTS;
-
 const token = jwt.sign({ data: userWithOutPassword }, secret, jwtConfiguration);
-  return res.status(200).json(token);
+  return res.status(200).json({ token });
+};
+
+module.exports = {
+  login,
 };

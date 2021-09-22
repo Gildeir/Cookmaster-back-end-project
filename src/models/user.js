@@ -21,9 +21,9 @@ const registerUser = async (name, email, password) => {
     _id: insertedId, name, email, role };
 };
 
-const findUser = async (name) => {
+const findUser = async (email) => {
   const db = await connect();
-  const userData = await db.collection('users').findOne({ name });
+  const userData = await db.collection('users').findOne({ email });
   return userData;
 };
 
