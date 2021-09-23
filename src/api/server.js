@@ -21,6 +21,7 @@ app.use(apiRoutes);
 
 apiRoutes.get('/recipes', routes.getAll);
 apiRoutes.get('/recipes/:id', routes.getById);
+apiRoutes.put('/recipes/:id', authMiddleware.validateJWT, routes.update);
 apiRoutes.post('/users', routes.createUsers);
 apiRoutes.post('/login', routes.login);
 apiRoutes.post('/recipes', authMiddleware.validateJWT, routes.getRecipes);

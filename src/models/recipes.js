@@ -22,12 +22,12 @@ const registerRecipes = async (name, ingredients, preparation, userId) => {
   return { _id: insertedId, name, ingredients, preparation, userId };
 };
 
-const update = async (id, name, quantity) => {
+const update = async (id, name, ingredients, preparation) => {
   const db = await connect();
-  await db.collection('products')
-    .updateOne({ _id: ObjectId(id) }, { $set: { name, quantity } });
-  const updatedProduct = await db.collection('products').findOne({ _id: ObjectId(id) });
-  return (updatedProduct);
+  await db.collection('recipes')
+    .updateOne({ _id: ObjectId(id) }, { $set: { name, ingredients, preparation } });
+  const updatedRecipes = await db.collection('recipes').findOne({ _id: ObjectId(id) });
+  return (updatedRecipes);
 };
 
 module.exports = {

@@ -3,6 +3,7 @@ const { getRecipes } = require('../controllers/recipes');
 const { createUsers } = require('../controllers/createUser');
 const { login } = require('../controllers/login');
 const { getById } = require('../controllers/recipes');
+const { update } = require('../controllers/recipes');
 
 module.exports = {
   getRecipes,
@@ -10,4 +11,5 @@ module.exports = {
   login,
   getAll,
   getById,
+  update,
 };
