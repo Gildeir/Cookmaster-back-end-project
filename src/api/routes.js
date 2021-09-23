@@ -1,11 +1,13 @@
-const { getAll } = require('../models/user');
-const { getPosts } = require('../controllers/posts');
+const { getAll } = require('../controllers/recipes');
+const { getRecipes } = require('../controllers/recipes');
 const { createUsers } = require('../controllers/createUser');
 const { login } = require('../controllers/login');
+const { getById } = require('../controllers/recipes');
 
 module.exports = {
-  getPosts,
+  getRecipes,
   createUsers,
   login,
   getAll,
+  getById,
 };

@@ -1,4 +1,3 @@
-const Model = require('../models/user');
 const userService = require('../services/userServices');
 
 const ERROR_INVALID_ENTRIES = (res) => res.status(400).json({
@@ -7,11 +6,6 @@ const ERROR_INVALID_ENTRIES = (res) => res.status(400).json({
 const ERROR_EMAIL_EXISTS = (res) => res.status(409).json({
   message: 'Email already registered',
 });
-
-const getAll = async (req, res) => {
-  const allUsers = await Model.getAll();
-  return res.json(allUsers);
-};
 
 const createUsers = async (req, res) => {
     const { name, email, password, role } = req.body;
@@ -26,5 +20,4 @@ const createUsers = async (req, res) => {
 
 module.exports = {
   createUsers,
-  getAll,
 };

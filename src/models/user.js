@@ -6,11 +6,6 @@ const emailExists = async (email) => {
   return emailConfirm !== null;
 };
 
-const getAll = async () => {
-  const db = await connect();
-  return db.collection('users').find().toArray();
- };
-
 const registerUser = async (name, email, password) => {
   const db = await connect();
   const role = 'user';
@@ -30,6 +25,5 @@ const findUser = async (email) => {
 module.exports = {
   registerUser,
   findUser,
-  getAll,
   emailExists,
 };

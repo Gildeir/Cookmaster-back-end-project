@@ -25,14 +25,13 @@ const { email, password } = req.body;
 
 if (!email || !password) return ERROR_USER_AND_LOGIN(res);
 
-console.log(email);
-
 const user = await User.findUser(email);
 
 if (!user || user.password !== password) return ERROR_USER_DONT_EXISTS(res);
 
+const { _id } = user;
 const userWithOutPassword = {
-  id: user.id,
+  _id,
   email: user.email,
 };
 
