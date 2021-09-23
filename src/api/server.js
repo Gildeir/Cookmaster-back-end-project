@@ -1,6 +1,7 @@
 // projeto
 const express = require('express');
 const bodyParser = require('body-parser');
+const app = require('./app');
 const routes = require('./routes');
 const authMiddleware = require('../middlewares/validateJWT');
 
@@ -12,7 +13,7 @@ const apiRoutes = express.Router();
 const PORT = 3000;
 
 // projeto
-const app = express();
+// const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
