@@ -25,4 +25,4 @@ apiRoutes.post('/users', routes.createUsers);
 apiRoutes.post('/login', routes.login);
 apiRoutes.post('/recipes', authMiddleware.validateJWT, routes.getRecipes);
 
-app.listen(PORT, () => console.log(`Conectado na porta ${PORT}`));
+app.listen(PORT, () => console.log(`conectado na porta ${PORT}`));
