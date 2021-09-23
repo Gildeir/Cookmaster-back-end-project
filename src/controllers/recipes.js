@@ -34,9 +34,17 @@ const update = async (req, res) => {
     return res.status(200).json(updatedRecipes);
 };
 
+const remove = async (req, res) => {
+  const { id } = req.params;
+  const removed = await Model.exclude(id);
+  // if (!removed) return WRONG_ID_FORMAT(res);
+  return res.status(204).json(removed);
+};
+
 module.exports = { 
   getRecipes,
   getAll,
   getById,
   update,
+  remove,
 };
