@@ -38,10 +38,20 @@ const exclude = async (id) => {
   return recipeToExclude;
 };
 
+const addingImageModel = async ({ _id, name, ingredients, preparation, userId }, image) => {
+  if (!ObjectId.isValid(_id)) return false;
+  const db = await connect();
+  await db.collection('recipes').updateOne(
+    { _id: ObjectId(_id) }, { $set: { name, ingredients, preparation, userId, image } },
+    );
+  return { _id, name, ingredients, preparation, userId, image };
+};
+
 module.exports = {
   registerRecipes,
   getAll,
   getById,
   update,
   exclude,
+  addingImageModel,
 };

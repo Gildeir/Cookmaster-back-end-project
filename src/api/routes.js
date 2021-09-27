@@ -5,6 +5,7 @@ const { login } = require('../controllers/login');
 const { getById } = require('../controllers/recipes');
 const { update } = require('../controllers/recipes');
 const { remove } = require('../controllers/recipes');
+const { addingImage } = require('../controllers/recipes');
 
 module.exports = {
   getRecipes,
@@ -14,4 +15,5 @@ module.exports = {
   getById,
   update,
   remove,
+  addingImage,
 };

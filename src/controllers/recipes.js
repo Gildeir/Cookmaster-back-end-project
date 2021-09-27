@@ -1,4 +1,5 @@
 const Model = require('../models/recipes');
+const Service = require('../services/serviceRecipes');
 
 const WRONG_ID_FORMAT = (res) => res.status(404).json({
   message: 'recipe not found',
@@ -41,10 +42,18 @@ const remove = async (req, res) => {
   return res.status(204).json(removed);
 };
 
+const addingImage = async (req, res) => {
+  console.log(req.file);
+  const recipe = await Service.addingImageService(req.params, req.file);
+  if (recipe.err) return res.status(recipe.err.code).json({ message: recipe.err.message });
+  return res.status(200).json(recipe);
+};
+
 module.exports = { 
   getRecipes,
   getAll,
   getById,
   update,
   remove,
+  addingImage,
 };
